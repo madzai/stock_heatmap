@@ -1,0 +1,35 @@
+services:
+      
+  stock-data-app:
+    image: stock-data:0.0.1
+    container_name: stock-data-app
+    networks:
+      - heatmap-network
+    ports:
+      - "8101:8091"
+
+  heatmap-ui-app:
+    image: heatmap-ui:0.0.1
+    container_name: heatmap-ui-app
+    networks:
+      - heatmap-network
+    ports:
+      - "8102:8092"
+  
+  frontend-app:
+    image: react:0.0.1
+    container_name: react-app
+    networks:
+      - heatmap-network
+    build: ./react
+    ports:
+      - "5174:5173"
+    volumes:
+      - ./react:/app
+      - /app/node_modules # Prevents local node_modules from overwriting container's
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Ensures file watching works in Docker
+
+networks:
+  heatmap-network:
+    driver: bridge
