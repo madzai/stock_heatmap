@@ -13,7 +13,8 @@ Also, open a finnhub account (free tier) and put your finnhub API key in the .en
 
 #### 3. Run the Python code in main.ipynb
 Open main.ipynb, press Run All
-The following database tables will be produced
+
+The following database tables will be produced:
 - **spx_stocks:** stock symbol, name, sector and industry
 - **spx_profile:** stock profile information
 - **spx_chart:** candlestick chart data 

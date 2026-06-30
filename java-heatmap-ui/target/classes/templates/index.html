@@ -1,0 +1,40 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/treemap.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/modules/coloraxis.js"></script>
+<script src="https://code.highcharts.com/themes/adaptive.js"></script>
+
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+
+<div class="layer-select-container">
+    <select id="layer-select" class="layer-select" aria-label="Treemap Layers">
+        <option value="2">Group by Sector</option>
+        <option value="3">Group by Sector & Industry</option>
+    </select>
+</div>
+
+<script>
+    (function () {
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get("layers") === "2" ? "2" : "3";
+
+        const script = document.createElement("script");
+        script.src = mode === "2" ? "js/treemap_2_layers.js" : "js/treemap_3_layers.js";
+        document.body.appendChild(script);
+
+        const layerSelect = document.getElementById("layer-select");
+        layerSelect.value = mode;
+
+        layerSelect.addEventListener("change", function () {
+            window.location.search = "?layers=" + layerSelect.value;
+        });
+    })();
+</script>
