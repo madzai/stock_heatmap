@@ -56,3 +56,10 @@ Clicking on an individual heatmap cell with pop out a new window showing the can
 
 Fullscreen mode
 ![alt text](img/image-4.png)
+
+Demo
+
+
+https://github.com/user-attachments/assets/7aae7682-8071-4f6b-a495-e3b5ed2267b2
+
+
